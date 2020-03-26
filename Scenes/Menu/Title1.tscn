@@ -1,0 +1,205 @@
+[gd_scene load_steps=19 format=2]
+
+[ext_resource path="res://Assets/Fonts/font1.tres" type="DynamicFont" id=1]
+[ext_resource path="res://Materials/Textures/Glass/Glass_2K_Albedo.png" type="Texture" id=2]
+[ext_resource path="res://Materials/Textures/Glass/Glass_2K_Normal.jpg" type="Texture" id=3]
+[ext_resource path="res://Scenes/Menu/FadeIn.tscn" type="PackedScene" id=4]
+[ext_resource path="res://Assets/Fonts/BluuNext-Bold.otf" type="DynamicFontData" id=5]
+[ext_resource path="res://Scenes/Menu/button_title_continue.tscn" type="PackedScene" id=6]
+[ext_resource path="res://Scenes/Menu/button_title_quit.tscn" type="PackedScene" id=7]
+[ext_resource path="res://Scenes/Menu/button_title_newgame.tscn" type="PackedScene" id=8]
+[ext_resource path="res://Scenes/Menu/button_title_settings.tscn" type="PackedScene" id=9]
+[ext_resource path="res://Scenes/Menu/button_title_load.tscn" type="PackedScene" id=10]
+[ext_resource path="res://Scenes/Menu/TitleScreen.gd" type="Script" id=11]
+[ext_resource path="res://Scenes/Global/room1.tscn" type="PackedScene" id=12]
+[ext_resource path="res://Scenes/Menu/Settings.tscn" type="PackedScene" id=13]
+[ext_resource path="res://Scenes/Menu/button_title_settings.gd" type="Script" id=14]
+
+[sub_resource type="DynamicFontData" id=1]
+font_path = "res://Assets/Fonts/BluuNext-Bold.otf"
+
+[sub_resource type="DynamicFont" id=2]
+size = 14
+outline_size = 1
+outline_color = Color( 0.364706, 0.313726, 0.737255, 1 )
+font_data = SubResource( 1 )
+
+[sub_resource type="DynamicFont" id=3]
+size = 66
+outline_color = Color( 0.364706, 0.313726, 0.737255, 1 )
+font_data = ExtResource( 5 )
+
+[sub_resource type="DynamicFont" id=4]
+size = 66
+outline_color = Color( 0.364706, 0.313726, 0.737255, 1 )
+font_data = ExtResource( 5 )
+
+[node name="TitleScreen" type="Control"]
+pause_mode = 2
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_top = 0.509949
+margin_bottom = 0.51001
+script = ExtResource( 11 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Menu" type="VBoxContainer" parent="."]
+anchor_right = 1.0
+anchor_bottom = 1.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Glass_2K_Albedo" type="Sprite" parent="Menu"]
+modulate = Color( 0.94902, 0.94902, 1, 1 )
+self_modulate = Color( 0.898039, 0.901961, 1, 1 )
+position = Vector2( 210, 539.583 )
+scale = Vector2( 0.205078, 0.527344 )
+texture = ExtResource( 2 )
+normal_map = ExtResource( 3 )
+
+[node name="ColorRect" type="ColorRect" parent="Menu/Glass_2K_Albedo"]
+margin_left = 1024.0
+margin_top = -1024.0
+margin_right = 1252.0
+margin_bottom = 1024.0
+color = Color( 0.301961, 0.321569, 0.745098, 0.188235 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="ColorRect2" type="ColorRect" parent="Menu/Glass_2K_Albedo"]
+margin_left = -1024.0
+margin_top = -1024.0
+margin_right = -796.0
+margin_bottom = 1024.0
+color = Color( 0.47451, 0.494118, 0.905882, 0.156863 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Title" type="Label" parent="Menu"]
+margin_right = 1920.0
+margin_bottom = 483.0
+size_flags_vertical = 1
+custom_fonts/font = ExtResource( 1 )
+text = "Setpiece
+"
+align = 2
+valign = 2
+uppercase = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="LeftSide" type="HBoxContainer" parent="Menu"]
+margin_top = 487.0
+margin_right = 394.0
+margin_bottom = 1080.0
+size_flags_horizontal = 0
+size_flags_vertical = 3
+custom_constants/separation = 0
+
+[node name="VersionLabel" type="Label" parent="Menu/LeftSide"]
+margin_top = 25.0
+margin_right = 72.0
+margin_bottom = 568.0
+custom_fonts/font = SubResource( 2 )
+text = "
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+ Version 0.1"
+
+[node name="Buttons" type="VBoxContainer" parent="Menu/LeftSide"]
+margin_left = 72.0
+margin_right = 394.0
+margin_bottom = 593.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+custom_constants/separation = 15
+alignment = 1
+
+[node name="button_title_continue" parent="Menu/LeftSide/Buttons" instance=ExtResource( 6 )]
+margin_top = 49.0
+margin_right = 322.0
+margin_bottom = 136.0
+custom_fonts/font = SubResource( 3 )
+disabled = true
+
+[node name="button_title_newgame" parent="Menu/LeftSide/Buttons" instance=ExtResource( 8 )]
+margin_top = 151.0
+margin_right = 322.0
+margin_bottom = 238.0
+custom_fonts/font = SubResource( 3 )
+scene_to_load = ExtResource( 12 )
+
+[node name="button_title_load" parent="Menu/LeftSide/Buttons" instance=ExtResource( 10 )]
+margin_top = 253.0
+margin_right = 322.0
+margin_bottom = 340.0
+custom_fonts/font = SubResource( 3 )
+disabled = true
+
+[node name="button_title_settings" parent="Menu/LeftSide/Buttons" instance=ExtResource( 9 )]
+margin_top = 355.0
+margin_right = 322.0
+margin_bottom = 442.0
+custom_fonts/font = SubResource( 3 )
+script = ExtResource( 14 )
+scene_to_load = ExtResource( 13 )
+
+[node name="button_title_quit" parent="Menu/LeftSide/Buttons" instance=ExtResource( 7 )]
+margin_top = 457.0
+margin_right = 322.0
+margin_bottom = 544.0
+custom_fonts/font = SubResource( 4 )
+
+[node name="Timer" type="Timer" parent="Menu/LeftSide/Buttons/button_title_quit"]
+process_mode = 0
+wait_time = 0.5
+
+[node name="FadeIn" parent="." instance=ExtResource( 4 )]
+visible = false
+
+[node name="ViewportContainer" type="ViewportContainer" parent="."]
+visible = false
+margin_right = 1920.0
+margin_bottom = 1080.0
+stretch = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Viewport" type="Viewport" parent="ViewportContainer"]
+size = Vector2( 1920, 1080 )
+handle_input_locally = false
+disable_3d = true
+render_target_update_mode = 0
+[connection signal="pressed" from="Menu/LeftSide/Buttons/button_title_settings" to="." method="_on_button_title_settings_pressed"]
+[connection signal="pressed" from="Menu/LeftSide/Buttons/button_title_quit" to="." method="_on_button_title_quit_pressed"]
+[connection signal="timeout" from="Menu/LeftSide/Buttons/button_title_quit/Timer" to="." method="_on_Timer_timeout"]
+[connection signal="fade_finished" from="FadeIn" to="." method="_on_FadeIn_fade_finished"]

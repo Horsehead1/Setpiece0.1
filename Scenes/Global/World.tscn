@@ -1,0 +1,49 @@
+[gd_scene load_steps=12 format=2]
+
+[ext_resource path="res://tdata/data.hterrain" type="Resource" id=1]
+[ext_resource path="res://addons/zylann.hterrain/hterrain.gd" type="Script" id=2]
+[ext_resource path="res://Materials/Textures/Sky/World.tres" type="Environment" id=3]
+[ext_resource path="res://Materials/Textures/Grass/Grass1/Grass1_2K_Albedo.png" type="Texture" id=4]
+[ext_resource path="res://Materials/Textures/Grass/Grass3/Grass3_2K_Normal.png" type="Texture" id=5]
+[ext_resource path="res://Materials/Textures/Grass/Grass2/Grass2_2K_Normal.png" type="Texture" id=6]
+[ext_resource path="res://Materials/Textures/Grass/Cliff1/Cliff1_2K_Albedo.png" type="Texture" id=7]
+[ext_resource path="res://Materials/Textures/Grass/Grass3/Grass3_2K_Albedo.png" type="Texture" id=8]
+[ext_resource path="res://Materials/Textures/Grass/Cliff1/Cliff1_2K_Normal.png" type="Texture" id=9]
+[ext_resource path="res://Materials/Textures/Grass/Grass2/Grass2_2K_Albedo.png" type="Texture" id=10]
+[ext_resource path="res://Scenes/Characters/character 1.tscn" type="PackedScene" id=11]
+
+[node name="Spatial" type="Spatial"]
+
+[node name="HTerrain" type="Spatial" parent="."]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -400, -1, -600 )
+script = ExtResource( 2 )
+lod_scale = 4.0
+_terrain_data = ExtResource( 1 )
+chunk_size = 32
+shader_type = "Classic4Lite"
+custom_shader = null
+shader_params/u_ground_uv_scale = 20
+shader_params/u_depth_blending = true
+shader_params/u_triplanar = false
+ground/albedo_bump_0 = ExtResource( 4 )
+ground/normal_roughness_0 = ExtResource( 4 )
+ground/albedo_bump_1 = ExtResource( 10 )
+ground/normal_roughness_1 = ExtResource( 6 )
+ground/albedo_bump_2 = ExtResource( 8 )
+ground/normal_roughness_2 = ExtResource( 5 )
+ground/albedo_bump_3 = ExtResource( 7 )
+ground/normal_roughness_3 = ExtResource( 9 )
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = ExtResource( 3 )
+
+[node name="DirectionalLight" type="DirectionalLight" parent="."]
+transform = Transform( -0.214979, 0.294404, -0.931188, -0.0255808, 0.951457, 0.306718, 0.976284, 0.0897585, -0.197012, -1.85303, 4.86132, 3.766 )
+light_color = Color( 0.921569, 0.882353, 0.882353, 1 )
+light_energy = 2.0
+shadow_enabled = true
+shadow_bias = 0.5
+shadow_contact = 0.1
+
+[node name="Player" parent="." instance=ExtResource( 11 )]
+transform = Transform( 1.5, 0, 0, 0, 1.5, 0, 0, 0, 1.5, 174.057, 193.871, 82.4051 )
